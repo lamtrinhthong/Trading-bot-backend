@@ -12,5 +12,5 @@ router.register(r'candlesticks', CandlestickViewSet)
 # Define the urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('chart/', include(router.urls)),
 ]

@@ -2,6 +2,7 @@ import os
 import django
 import pandas as pd
 import MetaTrader5 as mt5
+from django.utils import timezone
 from datetime import datetime
 from django.test import TestCase
 from chart.models.candlestick import Candlestick
@@ -35,13 +36,13 @@ class CandlestickImportTestCase(TestCase):
         # Iterate through DataFrame and save to Django model
         for index, row in df.iterrows():
             Candlestick.objects.create(
-                date=row['time'],
-                open_price=row['open'],
-                high_price=row['high'],
-                low_price=row['low'],
-                close_price=row['close'],
-                time_frame=row['time_frame']
-            )
+            date=timezone.make_aware(datetime.fromtimestamp(row['time'])),
+            open_price=row['open'],
+            high_price=row['high'],
+            low_price=row['low'],
+            close_price=row['close'],
+            time_frame=row['time_frame']  # Assuming all data belongs to the same timeframe
+        )
 
         # Assert that at least one Candlestick object is created
         self.assertGreaterEqual(Candlestick.objects.count(), 1)

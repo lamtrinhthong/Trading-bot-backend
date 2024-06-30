@@ -8,7 +8,6 @@ class Candlestick(models.Model):
         ('H4', '4-Hour')
     ]
 
-    id = models.AutoField(primary_key=True)
     date = models.DateTimeField()
     open_price = models.DecimalField(max_digits=10, decimal_places=2)
     high_price = models.DecimalField(max_digits=10, decimal_places=2)

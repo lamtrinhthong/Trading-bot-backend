@@ -19,14 +19,20 @@ def import_mt5_data(symbol, timeframe, number_of_candles):
 
     # Save data to Django model
     for index, row in df.iterrows():
-        Candlestick.objects.create(
-            date=row['time'],
-            open_price=row['open'],
-            high_price=row['high'],
-            low_price=row['low'],
-            close_price=row['close'],
-            time_frame=timeframe  # Assuming all data belongs to the same timeframe
-        )
+        print(row['time'])
+        print(row['open'])
+        print(row['high'])
+        print(row['low'])
+        print(row['close'])
+
+        # Candlestick.objects.create(
+        #     date=row['time'],
+        #     open_price=row['open'],
+        #     high_price=row['high'],
+        #     low_price=row['low'],
+        #     close_price=row['close'],
+        #     time_frame=timeframe  # Assuming all data belongs to the same timeframe
+        # )
 
     print('Candlestick data imported successfully')
 

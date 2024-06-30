@@ -23,10 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-n#gd@455wfek)9*yxf%a5w7-$v)#@a*#u_8wiw6*(e9w=hde$8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '192.168.1.13',
+]
 
 # Application definition
 
@@ -54,8 +57,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://192.168.14.129:3000",  # Replace with your frontend URL
+    "http://localhost:3000",
+    "http://192.168.1.19:3000",  # Replace with the React app's IP address and port
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -64,12 +70,6 @@ CORS_ALLOW_METHODS = [
     'PATCH',
     'POST',
     'PUT',
-]
-
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '192.168.14.130',
 ]
 
 ROOT_URLCONF = "trading_web_backend.urls"
